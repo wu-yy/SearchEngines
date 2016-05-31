@@ -7,7 +7,7 @@ import org.apache.lucene.search.*;
 import org.apache.lucene.search.Explanation.*;
 import org.apache.lucene.util.*;
 
-/**
+/** 
  * A Query that matches documents containing a term. This may be combined with
  * other terms with a {@link BooleanQuery}.
  */

@@ -1,4 +1,4 @@
-
+ 
 import org.apache.lucene.index.FieldInvertState;
 import org.apache.lucene.search.Similarity;
 

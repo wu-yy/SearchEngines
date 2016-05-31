@@ -3,7 +3,7 @@ import java.io.IOException;
 
 import org.apache.lucene.index.*;
 import org.apache.lucene.search.*;
-
+ 
 /**
  * Expert: A <code>Scorer</code> for documents matching a <code>Term</code>.
  */

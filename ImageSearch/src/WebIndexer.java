@@ -59,7 +59,7 @@ public class WebIndexer {
     		e.printStackTrace();
     	}
     }
-    
+     
     public static String getContent(String fileString) throws Exception
     {
     	BufferedReader reader = new BufferedReader(  
@@ -181,8 +181,10 @@ public class WebIndexer {
     	System.out.println("WebIndexer ");
     	List<String> htmllist=new ArrayList<String>();
     	String path = "C:\\Program Files\\Apache Software Foundation\\Tomcat 6.0\\webapps\\news.tsinghua.edu.cn\\mirror\\news.tsinghua.edu.cn";
+    	String path2="C:\\Program Files\\Apache Software Foundation\\Tomcat 6.0\\webapps\\news.tsinghua.edu.cn\\mirror\\pkunews.pku.edu.cn";
     	WebIndexer indexer=new WebIndexer("forIndex/index");
     	indexer.findHtml(htmllist,path);
+    	//indexer.findHtml(htmllist,path2);
     	System.out.println("find html finish");
     	//System.out.println(htmllist.size());
     	//for(int i = 0; i< 3;i++){

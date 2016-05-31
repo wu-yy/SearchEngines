@@ -7,11 +7,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 String imagePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/";
 %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>search result</title>
+<link rel="stylesheet" href="speech-input.css">
+<style>
+.si-wrapper input {
+	font-size: 1.0em;
+	padding: .1em;
+}
+</style>
 <style type="text/css">
 <!--
 #Layer1 {
@@ -51,6 +58,21 @@ a:active{text-decoration:overline; color:#F00;}
 	String currentQuery=(String) request.getAttribute("currentQuery");
 	int currentPage=(Integer) request.getAttribute("currentPage");
 %>
+<div class="si-wrapper" style="top: 10px; left: 10px; ">
+	
+	<form id="form1" name="form1" method="get" action="WebServer">
+    <label>
+      <input name="query"  type="text"   class="si-input" value="<%=currentQuery%>"/>     	
+    </label>
+    <label>
+    <input type="submit" name="Submit"  value="查询" />
+    </label>
+  </form>
+  <script src="speech-input.js"></script>
+</div>
+
+
+<!--
 <div id="Layer1">
   <form id="form1" name="form1" method="get" action="WebServer">
     <label>
@@ -61,6 +83,7 @@ a:active{text-decoration:overline; color:#F00;}
     </label>
   </form>
 </div>
+-->
 <div id="Layer2" style="top: 82px; height: 585px;">
   <div id="imagediv">结果显示如下：
   <br>

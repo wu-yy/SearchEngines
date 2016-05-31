@@ -25,11 +25,11 @@ public class WebServer extends HttpServlet{
 	public static final String indexDir="C:/Program Files/Apache Software Foundation/Tomcat 6.0/bin/forIndex";
 	public static final String picDir="";
 	private ImageSearcher search=null;
-	
 	public WebServer(){
 		super();
 		search=new ImageSearcher(new String(indexDir+"/index"));
 		search.loadGlobals(new String(indexDir+"/global.txt"));
+		
 	}
 	
 	public ScoreDoc[] showList(ScoreDoc[] results,int page){
@@ -50,6 +50,24 @@ public class WebServer extends HttpServlet{
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("utf-8");
 		String queryString=request.getParameter("query");
+		//hotList.add(queryString);
+		//加入搜索热词榜
+		FileWriter writer = null;  
+		 try {     
+	            // 打开一个写文件器，构造函数中的第二个参数true表示以追加形式写文件     
+	            writer = new FileWriter("C:/Program Files/Apache Software Foundation/Tomcat 6.0/bin/forIndex/hot.txt", true);     
+	            writer.write(queryString+"\n");       
+	        } catch (IOException e) {     
+	            e.printStackTrace();     
+	        } finally {     
+	            try {     
+	                if(writer != null){  
+	                    writer.close();     
+	                }  
+	            } catch (IOException e) {     
+	                e.printStackTrace();     
+	            }     
+	        }
 		String pageString=request.getParameter("page");
 		int page=1;
 		if(pageString!=null){
@@ -100,6 +118,7 @@ public class WebServer extends HttpServlet{
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//request.setAttribute("hot", hotList);
 		this.doGet(request, response);
 	}
 }
